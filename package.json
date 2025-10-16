@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"npm:server:start\" \"npm:dev --prefix client\"",
+    "server:start": "cd server && npm run start",
+    "test:e2e": "concurrently -k --success first \"npm:server:start\" \"npm:test:e2e:run --prefix client\"",
+    "seed": "node scripts/seed.mjs"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
