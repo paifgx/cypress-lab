@@ -6,14 +6,12 @@ import { AuthProvider } from '@/lib/auth';
 import { I18nProvider } from '@/lib/i18n';
 
 import '@/styles/global.css';
-import { worker } from './mocks/browser';
+import { startWorker } from './mocks/browser';
 
 async function enableMocking() {
   // The worker is started only in development to avoid interferences with E2E tests.
   if (import.meta.env.DEV) {
-    return worker.start({
-      onUnhandledRequest: 'bypass',
-    });
+    return startWorker();
   }
   return Promise.resolve();
 }
